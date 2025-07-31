@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: "Dune Rise";
+    src: url("./assets/Dune_Rise.eot?") format("eot"), url("./assets/Dune_Rise.woff") format("woff"), url("./assets/Dune_Rise.ttf") format("truetype"), url("./assets/Dune_Rise.svg#Dune_Rise") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@theme {
+    /* Fonts */
+    --font-dune: 'Dune Rise', sans-serif;
+    --font-helvetica: 'Helvetica', 'Arial', sans-serif;
+    --font-sans: 'Helvetica', 'Arial', sans-serif;
+
+    /* Colors */
+    --color-primary: #504334;
+    --color-secondary: #3C4A31;
+    --color-accent: #F1DEC0;
+    --color-border: #3C4A31;
+    --color-dark-bg: #31201A;
+
+    /* Animations */
+    --animate-fade-in: fadeIn 0.8s ease-in-out;
+    --animate-slide-up: slideUp 0.6s ease-out;
+    --animate-slide-in: slideIn 0.7s ease-out;
+
+    /* Keyframes */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        0% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateX(-30px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    /* Spacing */
+    --spacing-18: 4.5rem;
+    --spacing-22: 5.5rem;
+}
+
+.logo h1 {
+    font-family: var(--font-duna);
+    letter-spacing: 0.1em;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom hover effects for service items */
+.service-item {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+.service-item div {
+    transition: background-color 0.3s ease;
+}
+
+.service-item:hover div {
+    background-color: #333;
+}
+
+/* Portfolio item hover effects */
+.portfolio-item {
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-3px);
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+    transition: max-height 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+#mobile-menu.show {
+    max-height: 300px;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Backdrop blur fallback for older browsers */
+@supports not (backdrop-filter: blur(8px)) {
+    nav {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+}
