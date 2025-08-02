@@ -1,22 +1,18 @@
 import ParallaxDiv from "../common/ParalaxDiv";
-import leaf1 from '../../images/leaf1.webp';
-import leaf2 from '../../images/leaf2.webp';
-import leaf3 from '../../images/leaf3.webp';
-import leaf4 from '../../images/leaf4.webp';
-import leaf5 from '../../images/leaf5.webp';
+import leaf1 from '../../images/depositphotos_127680572-stock-photo-horizontal-floral-border-pattern-seamless.png';
 
-function ParalaxLeafs() {
+function ParallaxLeafs() {
     return (
-        <ParallaxDiv>
-            <div className="relative z-50 w-full justify-between">
-                <img src={leaf1} alt="paralax leaf" className="h-auto w-70 absolute right-0 z-50" />
-                <img src={leaf2} alt="paralax leaf" className="h-auto w-70 absolute right-0 z-50" />
-                <img src={leaf3} alt="paralax leaf" className="h-auto w-70 absolute left-0 z-50" />
-                <img src={leaf4} alt="paralax leaf" className="h-auto w-70 absolute left-0 z-50" />
-                <img src={leaf5} alt="paralax leaf" className="h-auto w-70 absolute right-0 z-50" />
+        <ParallaxDiv className="relative z-30 w-full overflow-hidden">
+            <div className="relative w-full h-20 sm:h-24 md:h-32 lg:h-40 xl:h-48">
+                <img
+                    src={leaf1}
+                    alt="parallax leaf border"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                />
             </div>
         </ParallaxDiv>
     );
 }
 
-export default ParalaxLeafs;
+export default ParallaxLeafs;

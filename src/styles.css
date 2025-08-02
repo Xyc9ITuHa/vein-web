@@ -25,8 +25,21 @@
     --animate-fade-in: fadeIn 0.8s ease-in-out;
     --animate-slide-up: slideUp 0.6s ease-out;
     --animate-slide-in: slideIn 0.7s ease-out;
+    --animate-blur-in: blurIn 0.5s ease-in-out;
 
     /* Keyframes */
+    @keyframes blurIn {
+        0% {
+            filter: blur(20px);
+            opacity: 0;
+        }
+
+        100% {
+            filter: blur(0);
+            opacity: 1;
+        }
+    }
+
     @keyframes fadeIn {
         0% {
             opacity: 0;
@@ -41,11 +54,13 @@
         0% {
             transform: translateY(30px);
             opacity: 0;
+            filter: blur(10px);
         }
 
         100% {
             transform: translateY(0);
             opacity: 1;
+            filter: blur(0);
         }
     }
 
@@ -53,11 +68,13 @@
         0% {
             transform: translateX(-30px);
             opacity: 0;
+            filter: blur(10px);
         }
 
         100% {
             transform: translateX(0);
             opacity: 1;
+            filter: blur(0);
         }
     }
 

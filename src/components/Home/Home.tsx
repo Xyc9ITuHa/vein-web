@@ -1,13 +1,15 @@
 import Navigation from "../common/Navigation";
 import Hero from "./Hero";
-import ParalaxLeafs from "./ParalaxLeafs";
+import Information from "./Information";
+import MiniGallery from "./MiniGallery";
 
 function Home() {
     return (
         <>
             <Navigation />
             <Hero />
-            <ParalaxLeafs />
+            <Information />
+            <MiniGallery />
             <div className="h-700"></div>
         </>
     );
