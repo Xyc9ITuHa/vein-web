@@ -1,20 +1,48 @@
 import photo from "../../images/photo.png";
+import flowers from "../../images/flowers.webp";
+import useIsInViewport from "../common/useIsInViewport";
 
 function Information() {
-    return (
+    const [flowersRef, isInViewport] = useIsInViewport<HTMLImageElement>({ threshold: 0.5 });
+    const text = `We are a floral design studio that specializes in creating unique and beautiful floral arrangements for all occasions. Our team of experienced florists is dedicated to providing exceptional service and quality, ensuring that every arrangement is crafted with care and attention to detail. Whether you're looking for a stunning bouquet for a wedding, a thoughtful gift for a loved one, or simply want to brighten up your home, we have the perfect floral solution for you.`;
 
-        <section id="information">
-            <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row">
-                <div>
-                    <h1 className="font-helvetica text-9xl text-dark-bg font-black">Who<br />We<br />Are.</h1>
+    return (
+        <section id="information" className="py-16 relative">
+            <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+
+                <div className="flex-shrink-0 ">
+                    <img
+                        ref={flowersRef}
+                        src={flowers}
+                        alt="flowers on the floor"
+                        className={`overflow-visible absolute -z-10 transition-all duration-1000 ease-in-out w-full h-auto lg:top-0 ${isInViewport
+                            ? 'blur-none opacity-80 translate-y-0'
+                            : 'opacity-0 translate-y-10 blur-lg'
+                            }`}
+                    />
+                    <h1 className="font-helvetica text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-dark-bg font-black leading-none relative z-10">
+                        Who<br />We<br />Are.
+                    </h1>
                 </div>
-                <div className="shadow-xl h-fit rounded-2xl w-full bg-white flex flex-col">
-                    <img src={photo} className="h-full w-auto right-0 overflow-clip rounded-tl-2xl rounded-tr-2xl" />
-                    <p className="px-4 py-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce leo nisl, egestas sit amet pellentesque vel, consequat sed nisl. Praesent diam diam, pharetra ut malesuada sit amet, pulvinar commodo felis. Vivamus porttitor, odio id venenatis commodo, ante tortor porttitor elit, sit amet commodo orci lectus sed mauris. Sed semper, felis et aliquet congue, eros erat porttitor arcu, vitae viverra urna justo at elit. Aliquam semper condimentum sodales. Proin sed leo leo. Donec id purus eget nunc suscipit volutpat et quis quam. Praesent justo sem, posuere fermentum velit et, luctus maximus magna. Fusce et ullamcorper tellus. Etiam pharetra risus sit amet dapibus feugiat. </p>
+
+                {/* Content Card */}
+                <div className="shadow-xl rounded-2xl w-full bg-white flex flex-col sm:flex-row overflow-hidden">
+                    {/* Text Content */}
+                    <div className="flex-1 p-6 sm:p-8 flex items-center">
+                        <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
+                            {text}
+                        </p>
+                    </div>
+                    <div className="flex-shrink-0 sm:w-80 md:w-96">
+                        <img
+                            src={photo}
+                            alt="Floral design studio"
+                            className="w-full h-64 sm:h-full object-cover"
+                        />
+                    </div>
                 </div>
             </div>
         </section>
-
     );
 }
 
