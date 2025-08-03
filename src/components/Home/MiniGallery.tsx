@@ -68,7 +68,7 @@ function MiniGallery() {
                     Look at our work <br />
                     Or better visit our{" "}
                     <a className="font-extrabold text-dark-bg underline decoration-wavy hover:cursor-pointer">
-                        Gallery
+                        <em>Gallery</em>
                     </a>
                 </h2>
                 <div className="pt-3">
@@ -93,7 +93,8 @@ function MiniGallery() {
 
                 <button
                     onClick={generateGallery}
-                    className="mt-4 px-2 py-2 bg-dark-bg text-white rounded-full hover:bg-opacity-80"
+                    className="mt-4 px-2 py-2 bg-dark-bg text-white rounded-full hover:bg-opacity-80 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:bg-amber-950 transition-all duration-300 ease-in-out"
+                    aria-label="Refresh Gallery"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />

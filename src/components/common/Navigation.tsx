@@ -15,10 +15,10 @@ function classNames(...classes: string[]) {
 
 export default function Example() {
     return (
-        <Disclosure as="nav" className="bg-dark-bg/95 w-full fixed top-0 z-50 backdrop-blur-xs">
+        <Disclosure as="nav" className="bg-dark-bg/95 w-full fixed top-0 z-50 backdrop-blur-xs overflow-hidden">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
-                    <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                    <div className="fixed inset-y-0 right-0 flex items-center sm:hidden">
                         {/* Mobile menu button*/}
                         <DisclosureButton className="group relative inline-flex items-center justify-center p-2 text-white hover:bg-dark-bg/70 hover:text-white focus:ring-1 focus:ring-white focus:outline-hidden focus:ring-inset">
                             <span className="absolute -inset-0.5" />

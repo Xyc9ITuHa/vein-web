@@ -2,6 +2,8 @@ import photo from "/images/photo.png";
 import flowers from "/images/flowers.webp";
 import { useIntersection } from "../common/useIntersection";
 import { useRef } from "react";
+import Div3D from "../common/Div3D";
+import Card from "../common/Card";
 
 const Information = () => {
     const flowersRef = useRef(null);
@@ -25,14 +27,14 @@ const Information = () => {
                             : 'opacity-0 scale-75 blur-lg'
                             }`}
                     />
-                    <h1 className="font-helvetica text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-dark-bg font-black leading-none relative z-10">
-                        Who<br />We<br />Are.
-                    </h1>
+                    <Div3D sensitivity={20} className="cursor-default">
+                        <h1 className="font-helvetica text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-dark-bg font-black leading-none relative z-10">
+                            Who<br />We<br />Are.
+                        </h1>
+                    </Div3D>
                 </div>
 
-                {/* Content Card */}
-                <div className="shadow-xl rounded-2xl w-full bg-white flex flex-col sm:flex-row overflow-hidden">
-                    {/* Text Content */}
+                <Card className="flex flex-col sm:flex-row">
                     <div className="flex-1 p-6 sm:p-8 flex items-center">
                         <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
                             {text}
@@ -45,7 +47,7 @@ const Information = () => {
                             className="w-full h-64 sm:h-full object-cover"
                         />
                     </div>
-                </div>
+                </Card>
             </div>
         </section>
     );
