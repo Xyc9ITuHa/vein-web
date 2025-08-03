@@ -1,0 +1,67 @@
+{
+  "photos": [
+    {
+      "src": "/vein-web/images/gallery/abstract flowers statue decoration outdoors.jpg",
+      "width": 1280,
+      "height": 960,
+      "alt": "Abstract Flowers Statue Decoration Outdoors"
+    },
+    {
+      "src": "/vein-web/images/gallery/boat with red flowers decorated  nose.jpg",
+      "width": 960,
+      "height": 1280,
+      "alt": "Boat With Red Flowers Decorated  Nose"
+    },
+    {
+      "src": "/vein-web/images/gallery/car with pink flowers falling out of it.jpg",
+      "width": 960,
+      "height": 1280,
+      "alt": "Car With Pink Flowers Falling Out Of It"
+    },
+    {
+      "src": "/vein-web/images/gallery/circle made out of swoven branches.jpg",
+      "width": 960,
+      "height": 1280,
+      "alt": "Circle Made Out Of Swoven Branches"
+    },
+    {
+      "src": "/vein-web/images/gallery/hanging armchair whth yellow flowers decoration.jpg",
+      "width": 960,
+      "height": 1280,
+      "alt": "Hanging Armchair Whth Yellow Flowers Decoration"
+    },
+    {
+      "src": "/vein-web/images/gallery/room with sofa and different flowers.jpg",
+      "width": 1280,
+      "height": 960,
+      "alt": "Room With Sofa And Different Flowers"
+    },
+    {
+      "src": "/vein-web/images/gallery/staircase with luxurious flowers decoration.jpg",
+      "width": 1280,
+      "height": 960,
+      "alt": "Staircase With Luxurious Flowers Decoration"
+    },
+    {
+      "src": "/vein-web/images/gallery/swoven branches ceiling above the bar.jpg",
+      "width": 720,
+      "height": 1280,
+      "alt": "Swoven Branches Ceiling Above The Bar"
+    },
+    {
+      "src": "/vein-web/images/gallery/wedding table decorated with white roses and blue flowers.jpg",
+      "width": 960,
+      "height": 1280,
+      "alt": "Wedding Table Decorated With White Roses And Blue Flowers"
+    },
+    {
+      "src": "/vein-web/images/gallery/wheat decorated ceiling on staircase.jpg",
+      "width": 960,
+      "height": 1280,
+      "alt": "Wheat Decorated Ceiling On Staircase"
+    }
+  ],
+  "generated": "2025-08-03T17:14:52.034Z",
+  "count": 10,
+  "note": "Generated automatically by generatePhotos.js"
+}

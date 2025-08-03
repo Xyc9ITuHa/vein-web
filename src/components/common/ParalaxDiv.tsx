@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useIntersection } from './useIntersection';
 
 interface ParallaxDivProps {
     children: React.ReactNode;
@@ -8,6 +9,8 @@ interface ParallaxDivProps {
 
 const ParallaxDiv = ({ children, speed = 1, className = "" }: ParallaxDivProps) => {
     const elementRef = useRef<HTMLDivElement>(null);
+    const isVisible = useIntersection(elementRef, '100px');
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,14 +18,11 @@ const ParallaxDiv = ({ children, speed = 1, className = "" }: ParallaxDivProps) 
             const element = elementRef.current;
 
             if (element) {
-                // Fixed calculation: higher speed = faster movement
                 const rate = scrolled * (speed - 1);
-                // Apply transform directly for better performance
                 element.style.transform = `translateY(${rate}px)`;
             }
         };
 
-        // Throttle scroll events for better performance
         let ticking = false;
         const optimizedScroll = () => {
             if (!ticking) {
@@ -38,17 +38,25 @@ const ParallaxDiv = ({ children, speed = 1, className = "" }: ParallaxDivProps) 
         return () => window.removeEventListener('scroll', optimizedScroll);
     }, [speed]);
 
-    return (
-        <div
+    if (!isVisible) {
+        return <div
             ref={elementRef}
-            className={`relative ${className}`}
-            style={{
-                willChange: 'transform', // Optimize for animations
-            }}
-        >
+            className={`relative ${className}`}>
             {children}
-        </div>
-    );
+        </div>;
+    } else {
+        return (
+            <div
+                ref={elementRef}
+                className={`relative ${className}`}
+                style={{
+                    willChange: 'transform',
+                }}
+            >
+                {children}
+            </div>
+        );
+    }
 };
 
 export default ParallaxDiv;

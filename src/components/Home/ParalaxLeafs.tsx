@@ -1,5 +1,5 @@
 import ParallaxDiv from "../common/ParalaxDiv";
-import leaf1 from '../../images/depositphotos_127680572-stock-photo-horizontal-floral-border-pattern-seamless.png';
+import leaf1 from '/images/depositphotos_127680572-stock-photo-horizontal-floral-border-pattern-seamless.png';
 
 function ParallaxLeafs() {
     return (
