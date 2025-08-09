@@ -6,7 +6,7 @@ interface CardProps {
 
 function Card({ children, className = '' }: CardProps) {
     return (
-        <div className={`shadow-xl rounded-2xl w-full bg-white flex overflow-hidden ${className}`}>
+        <div className={`shadow-md rounded-2xl w-full bg-white flex overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all ease-in ${className}`}>
             {children}
         </div>
     );

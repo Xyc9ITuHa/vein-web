@@ -15,8 +15,8 @@ function classNames(...classes: string[]) {
 
 export default function Example() {
     return (
-        <Disclosure as="nav" className="bg-dark-bg/95 w-full fixed top-0 z-50 backdrop-blur-xs overflow-hidden">
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <Disclosure as="nav" className="bg-light-oak/90 w-full fixed top-0 z-50 backdrop-blur-xs overflow-hidden">
+            <div className="mx-auto max-w-7xl pr-2 sm:pr-6 lg:pr-8">
                 <div className="relative flex h-16 items-center justify-between">
                     <div className="fixed inset-y-0 right-0 flex items-center sm:hidden">
                         {/* Mobile menu button*/}
@@ -28,9 +28,11 @@ export default function Example() {
                         </DisclosureButton>
                     </div>
                     <div className="flex flex-1 items-center justify-between">
-                        <div className="flex shrink-0 items-center justify-center ml-2">
-                            <LogoColors className="h-10 w-auto self" colors={['#FFFFFF', '#FFFFFF']} />
-                            <h1 className="hidden sm:ml-2 sm:block font-dune text-3xl text-white mt-1">VeIn</h1>
+                        <div className="flex shrink-0 items-center justify-center">
+                            <LogoColors className="h-20 w-auto opacity-30 absolute left-0 scale-130 -translate-x-3" colors={['#FFFFFF', '#FFFFFF']} isFrame={false} />
+                            <div className="flex flex-col items-center fit-content ml-15">
+                                <h1 className="font-dune text-3xl text-white mt-1">VeIn</h1>
+                            </div>
                         </div>
 
                         <div className="hidden sm:block right-0">

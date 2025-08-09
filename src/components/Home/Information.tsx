@@ -1,4 +1,4 @@
-import photo from "/images/photo.png";
+import photo from "../../../public/images/alona_photo.jpg";
 import flowers from "/images/flowers.webp";
 import { useIntersection } from "../common/useIntersection";
 import { useRef } from "react";
@@ -9,9 +9,6 @@ const Information = () => {
     const flowersRef = useRef(null);
     const isVisible = useIntersection(flowersRef, "100px");
 
-
-
-    const text = `We are a floral design studio that specializes in creating unique and beautiful floral arrangements for all occasions. Our team of experienced florists is dedicated to providing exceptional service and quality, ensuring that every arrangement is crafted with care and attention to detail. Whether you're looking for a stunning bouquet for a wedding, a thoughtful gift for a loved one, or simply want to brighten up your home, we have the perfect floral solution for you.`;
 
     return (
         <section id="information" className="py-16 relative">
@@ -29,7 +26,7 @@ const Information = () => {
                     />
                     <Div3D sensitivity={20} className="cursor-default">
                         <h1 className="font-helvetica text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-dark-bg font-black leading-none relative z-10">
-                            Who<br />We<br />Are.
+                            About<br />Alona
                         </h1>
                     </Div3D>
                 </div>
@@ -37,7 +34,9 @@ const Information = () => {
                 <Card className="flex flex-col sm:flex-row">
                     <div className="flex-1 p-6 sm:p-8 flex items-center">
                         <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
-                            {text}
+                            Alona Malafeieva is a floral designer and decorator known for her poetic, nature-inspired installations. A graduate of the ArtHouse School of Floral Design in Dnipro, Ukraine, she has over 10 years of experience transforming urban spaces with flowers, grasses, and textures.
+
+                            Now based in Belgium, Alona is the founder of <em>Vein Design</em>—a studio specializing in elegant storefronts, boutique displays, and intimate event styling. In 2022, her 600 m² ceiling installation made of natural materials won the Restaurant & Bar Design Award in London. In 2025, she presents her sixth creation at <em>Floraliën Brussels</em>—a signature piece blending raw beauty and modern design.
                         </p>
                     </div>
                     <div className="flex-shrink-0 sm:w-80 md:w-96">
