@@ -1,1 +1,0 @@
-import{j as o}from"./index-Dn5u9AjM.js";function s({children:e,className:a=""}){return o.jsx("div",{className:`shadow-md rounded-2xl w-full bg-white flex overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all ease-in ${a}`,children:e})}export{s as default};

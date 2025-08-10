@@ -1,1 +1,0 @@
-import{r}from"./index-Dn5u9AjM.js";const a=(s,n)=>{const[o,c]=r.useState(!1);return r.useEffect(()=>{const e=s?.current,t=new IntersectionObserver(([u])=>{c(u.isIntersecting)},{rootMargin:n});return e&&t?.observe(e),()=>e&&t.unobserve(e)},[]),o};export{a as u};
