@@ -17,10 +17,8 @@ function Feedback() {
                     isTilted={true}
                     tiltDirection='left'
                     autoplay={true}
-                    autoplaySpeed={0.1}
+                    autoplaySpeed={0.3}
                     autoplayDirection="down"
-                    pauseOnHover={true}
-
                 />
             </div>
         </section>

@@ -3,16 +3,23 @@ import Feedback from "./Feedback";
 import Hero from "./Hero";
 import Information from "./Information";
 import MiniGallery from "./MiniGallery";
+import Footer from "../common/Footer";
 
 function Home() {
     return (
         <>
-            <Navigation />
-            <Hero />
-            <Information />
-            <MiniGallery />
-            <Feedback />
-            <div className="h-700"></div>
+            <header>
+                <Navigation />
+                <Hero />
+            </header>
+            <main>
+                <Information />
+                <MiniGallery />
+                <Feedback />
+            </main>
+            <footer>
+                <Footer />
+            </footer>
         </>
     );
 }

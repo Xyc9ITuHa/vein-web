@@ -33,7 +33,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   isTilted = false,
   tiltDirection = 'left',
   autoplay = false,
-  autoplaySpeed = 0.5,
+  autoplaySpeed = 2,
   autoplayDirection = 'down',
   pauseOnHover = false,
 }) => {
@@ -70,31 +70,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
       gsap.set(child, { y });
     });
 
-    const observer = Observer.create({
-      target: container,
-      type: 'wheel,touch,pointer',
-      preventDefault: true,
-      onPress: ({ target }) => {
-        (target as HTMLElement).style.cursor = 'grabbing';
-      },
-      onRelease: ({ target }) => {
-        (target as HTMLElement).style.cursor = 'grab';
-      },
-      onChange: ({ deltaY, isDragging, event }) => {
-        const d = event.type === 'wheel' ? -deltaY : deltaY;
-        const distance = isDragging ? d * 5 : d * 10;
-        divItems.forEach((child) => {
-          gsap.to(child, {
-            duration: 0.5,
-            ease: 'expo.out',
-            y: `+=${distance}`,
-            modifiers: {
-              y: gsap.utils.unitize(wrapFn),
-            },
-          });
-        });
-      },
-    });
+    // Observer removed - no more grab and pull interaction
 
     let rafId: number;
     if (autoplay) {
@@ -125,21 +101,21 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
         container.addEventListener('mouseleave', startTicker);
 
         return () => {
-          observer.kill();
+          // observer.kill(); // No observer to kill
           stopTicker();
           container.removeEventListener('mouseenter', stopTicker);
           container.removeEventListener('mouseleave', startTicker);
         };
       } else {
         return () => {
-          observer.kill();
+          // observer.kill(); // No observer to kill
           rafId && cancelAnimationFrame(rafId);
         };
       }
     }
 
     return () => {
-      observer.kill();
+      // observer.kill(); // No observer to kill
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, [
