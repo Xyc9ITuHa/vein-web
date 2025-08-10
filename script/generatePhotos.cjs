@@ -102,7 +102,7 @@ function generatePhotosJson() {
         .replace(/\b\w/g, (letter) => letter.toUpperCase()); // Capitalize words
 
       return {
-        src: `/vein-web/images/gallery/${file}`,
+        src: `/images/gallery/${file}`,
         width: width,
         height: height,
         alt: altText,

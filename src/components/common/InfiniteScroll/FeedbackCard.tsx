@@ -1,6 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import { Star, StarHalf } from 'lucide-react'
 
 interface FeedbackCardProps {
     stars: number;
@@ -13,15 +11,15 @@ function FeedbackCard({ stars, comment, author }: FeedbackCardProps) {
         <div className="bg-white shadow-md rounded-lg px-6 flex flex-col items-center w-full h-full pb-4 pt-2">
             <div className="flex flex-row items-center justify-between w-full top-0">
                 <p className="font-helvetica font-extrabold">{author}</p>
-                <div>
+                <div className="flex flex-row">
                     {[...Array(5)].map((_, i) => (
                         <span key={i}>
                             {stars >= i + 1 ? (
-                                <FontAwesomeIcon icon={faStar} className="text-yellow-500" />
+                                <Star size={16} className="text-yellow-500 fill-current" />
                             ) : stars > i ? (
-                                <FontAwesomeIcon icon={faStarHalf} className="text-yellow-500" />
+                                <StarHalf size={16} className="text-yellow-500 fill-current" />
                             ) : (
-                                <FontAwesomeIcon icon={faStar} className="text-gray-300/0" />
+                                <Star size={16} className="text-gray-300/0" />
                             )}
                         </span>
                     ))}

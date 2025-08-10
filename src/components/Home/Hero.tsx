@@ -1,6 +1,7 @@
+import { lazy } from "react";
 import { LogoColors } from "../icons/LogoColors.tsx";
-import Threads from "../common/Threads.tsx"
-import ParallaxDiv from "../common/ParalaxDiv.tsx";
+const Threads = lazy(() => import("../common/Threads.tsx"))
+const ParallaxDiv = lazy(() => import("../common/ParalaxDiv.tsx"));
 
 
 function Hero() {
@@ -24,8 +25,8 @@ function Hero() {
                             <h1 className="font-dune text-6xl lg:text-7xl xl:text-8xl text-secondary mt-2 sm:mt-3">
                                 VEIN
                             </h1>
-                            <h4 className="text-2xl font-helvetica font-light mt-1 text-secondary">
-                                floral design
+                            <h4 className="text-3xl font-helvetica font-light mt-1 text-secondary">
+                                design
                             </h4>
                         </ParallaxDiv>
                     </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';

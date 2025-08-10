@@ -1,9 +1,15 @@
-import Home from "../Home/Home.tsx";
 import Gallery from "../Gallery/Gallery.tsx";
-function App() {
+import Home from "../Home/Home.tsx";
+import { Routes, Route } from "react-router-dom";
+
+const App = () => {
 
   return (
-    <Home />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/gallery" element={<Gallery />} />
+    </Routes>
   )
-}
+};
+
 export default App

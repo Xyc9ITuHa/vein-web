@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useIntersection } from './useIntersection';
 
 const throttle = <T extends (...args: any[]) => void>(

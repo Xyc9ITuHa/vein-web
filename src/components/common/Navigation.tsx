@@ -3,10 +3,10 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { LogoColors } from '../icons/LogoColors'
 
 const navigation = [
-    { name: 'Home', href: '#', current: false },
-    { name: 'About us', href: '#', current: false },
-    { name: 'Gallery', href: '#', current: false },
-    { name: 'Contact', href: '#', current: false },
+    { name: 'Home', href: '/', current: false },
+    { name: 'About us', href: '#information', current: false },
+    { name: 'Gallery', href: '/gallery', current: false },
+    { name: 'Contact', href: '#contact', current: false },
 ]
 
 function classNames(...classes: string[]) {

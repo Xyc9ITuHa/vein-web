@@ -1,9 +1,20 @@
+import { lazy, Suspense } from "react";
 import Navigation from "../common/Navigation";
-import Feedback from "./Feedback";
 import Hero from "./Hero";
-import Information from "./Information";
-import MiniGallery from "./MiniGallery";
-import Footer from "../common/Footer";
+
+const Information = lazy(() => import("./Information"));
+const MiniGallery = lazy(() => import("./MiniGallery"));
+const Feedback = lazy(() => import("./Feedback"));
+const Contact = lazy(() => import("./Contact"));
+const Footer = lazy(() => import("../common/Footer"));
+
+const SectionLoader = ({ height = "h-64" }: { height?: string }) => (
+    <div className={`${height} bg-gray-100 animate-pulse rounded-lg mx-4 my-8`}>
+        <div className="flex items-center justify-center h-full">
+            <div className="text-gray-400">Loading...</div>
+        </div>
+    </div>
+);
 
 function Home() {
     return (
@@ -12,13 +23,29 @@ function Home() {
                 <Navigation />
                 <Hero />
             </header>
+
             <main>
-                <Information />
-                <MiniGallery />
-                <Feedback />
+                <Suspense fallback={<SectionLoader />}>
+                    <Information />
+                </Suspense>
+
+                <Suspense fallback={<SectionLoader />}>
+                    <MiniGallery />
+                </Suspense>
+
+                <Suspense fallback={<SectionLoader />}>
+                    <Feedback />
+                </Suspense>
+
+                <Suspense fallback={<SectionLoader />}>
+                    <Contact />
+                </Suspense>
             </main>
+
             <footer>
-                <Footer />
+                <Suspense fallback={<SectionLoader height="h-32" />}>
+                    <Footer />
+                </Suspense>
             </footer>
         </>
     );

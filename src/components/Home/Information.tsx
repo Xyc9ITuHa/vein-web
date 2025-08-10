@@ -1,9 +1,9 @@
-import photo from "../../../public/images/alona_photo.jpg";
-import flowers from "/images/flowers.webp";
+const photo = "/images/alona_photo.webp";
+const flowers = "/images/flowers.webp";
 import { useIntersection } from "../common/useIntersection";
-import { useRef } from "react";
-import Div3D from "../common/Div3D";
-import Card from "../common/Card";
+import { lazy, useRef } from "react";
+const Div3D = lazy(() => import("../common/Div3D"));
+const Card = lazy(() => import("../common/Card"));
 
 const Information = () => {
     const flowersRef = useRef(null);
