@@ -1,3 +1,13 @@
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+[plugins.inputs.audits]
+  performance = true
+  accessibility = true
+  best-practices = true
+  seo = true
+  pwa = true
+
 [build]
   publish = "dist"
   command = "npm run build"
