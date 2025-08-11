@@ -18,16 +18,13 @@ function GalleryMain() {
 
     return (
         <>
-            <section id="gallery" className="py-4 px-2 bg-yellow-50/70 drop-shadow-2xl">
-                <h2 className="font-helvetica font-bold text-5xl my-2">
-                    Look at our work <br />
-                    Or better visit our{" "}
-                    <a className="font-extrabold text-dark-bg underline decoration-wavy hover:cursor-pointer">
-                        <em>Gallery</em>
-                    </a>
-                </h2>
-                <div className="pt-3">
-                    <>
+            <section id="gallery" className="py-4 bg-yellow-50/70 drop-shadow-2xl">
+
+                <div className="pt-13">
+                    <div className="shadow-lg px-5 pb-4 mb-4">
+                        <h2 className="text-5xl text-secondary font-bold my-4">We collected our works in this beautiful gallery</h2>
+                    </div>
+                    <div className="px-4">
                         <MasonryPhotoAlbum
                             photos={Gallery}
                             onClick={({ index }) => setIndex(index)}
@@ -39,7 +36,7 @@ function GalleryMain() {
                             close={() => setIndex(-1)}
                             plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
                         />
-                    </>
+                    </div>
                 </div>
             </section>
         </>

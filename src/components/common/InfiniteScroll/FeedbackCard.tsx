@@ -15,9 +15,9 @@ function FeedbackCard({ stars, comment, author }: FeedbackCardProps) {
                     {[...Array(5)].map((_, i) => (
                         <span key={i}>
                             {stars >= i + 1 ? (
-                                <Star size={16} className="text-yellow-500 fill-current" />
+                                <Star size={16} className="text-yellow-500 fill-current m-0.5" />
                             ) : stars > i ? (
-                                <StarHalf size={16} className="text-yellow-500 fill-current" />
+                                <StarHalf size={16} className="text-yellow-500 fill-current m-0.5" />
                             ) : (
                                 <Star size={16} className="text-gray-300/0" />
                             )}

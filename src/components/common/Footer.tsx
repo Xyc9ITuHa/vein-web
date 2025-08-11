@@ -6,6 +6,7 @@ import {
 import { LogoColors } from '../icons/LogoColors'
 import type { SVGProps } from 'react'
 import type { JSX } from 'react/jsx-runtime'
+import { Instagram } from 'lucide-react'
 
 const navigation = {
     main: [
@@ -19,14 +20,7 @@ const navigation = {
             name: 'Instagram',
             href: '#',
             icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
-                <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-                    <path
-                        fillRule="evenodd"
-                        d="M12.017 0C8.396 0 7.999.016 6.79.08 5.588.144 4.738.272 3.995.512a4.979 4.979 0 0 0-1.804 1.175A4.979 4.979 0 0 0 .987 3.691C.747 4.434.619 5.284.555 6.486.491 7.695.475 8.092.475 11.713s.016 4.018.08 5.227c.064 1.202.192 2.052.432 2.795a4.979 4.979 0 0 0 1.175 1.804 4.979 4.979 0 0 0 1.804 1.175c.743.24 1.593.368 2.795.432 1.209.066 1.606.082 5.227.082s4.018-.016 5.227-.082c1.202-.064 2.052-.192 2.795-.432a4.979 4.979 0 0 0 1.804-1.175 4.979 4.979 0 0 0 1.175-1.804c.24-.743.368-1.593.432-2.795.066-1.209.082-1.606.082-5.227s-.016-4.018-.082-5.227c-.064-1.202-.192-2.052-.432-2.795a4.979 4.979 0 0 0-1.175-1.804A4.979 4.979 0 0 0 20.221.987C19.478.747 18.628.619 17.426.555 16.217.491 15.82.475 12.199.475h-.182zm-.117 2.154c3.586 0 4.01.016 5.425.08 1.308.06 2.02.279 2.493.463.627.244 1.074.536 1.544 1.006s.762.917 1.006 1.544c.184.473.403 1.185.463 2.493.064 1.415.08 1.839.08 5.425s-.016 4.01-.08 5.425c-.06 1.308-.279 2.02-.463 2.493a4.15 4.15 0 0 1-1.006 1.544 4.15 4.15 0 0 1-1.544 1.006c-.473.184-1.185.403-2.493.463-1.415.064-1.839.08-5.425.08s-4.01-.016-5.425-.08c-1.308-.06-2.02-.279-2.493-.463a4.15 4.15 0 0 1-1.544-1.006 4.15 4.15 0 0 1-1.006-1.544c-.184-.473-.403-1.185-.463-2.493-.064-1.415-.08-1.839-.08-5.425s.016-4.01.08-5.425c.06-1.308.279-2.02.463-2.493a4.15 4.15 0 0 1 1.006-1.544 4.15 4.15 0 0 1 1.544-1.006c.473-.184 1.185-.403 2.493-.463 1.415-.064 1.839-.08 5.425-.08z"
-                        clipRule="evenodd"
-                    />
-                    <path d="M12 7.378a4.622 4.622 0 1 0 0 9.244 4.622 4.622 0 0 0 0-9.244zM12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.884-7.804a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0z" />
-                </svg>
+                <Instagram {...props} />
             ),
         },
         {
@@ -166,20 +160,20 @@ export default function Footer() {
                         <p className="text-neutral-400 font-light text-sm">
                             &copy; {new Date().getFullYear()} VeIn. All rights reserved.
                         </p>
-                        <div className="flex space-x-6 mt-4 md:mt-0">
-                            <a href="#" className="text-neutral-400 font-light hover:text-white text-sm transition-colors duration-200">
-                                Privacy Policy
-                            </a>
-                            <a href="#" className="text-neutral-400 font-light hover:text-white text-sm transition-colors duration-200">
-                                Terms of Service
-                            </a>
-                            <a href="#" className="text-neutral-400 font-light hover:text-white text-sm transition-colors duration-200">
-                                Cookie Policy
-                            </a>
-                        </div>
+                        {/* {< div className="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" className="text-neutral-400 font-light hover:text-white text-sm transition-colors duration-200">
+                            Privacy Policy
+                        </a>
+                        <a href="#" className="text-neutral-400 font-light hover:text-white text-sm transition-colors duration-200">
+                            Terms of Service
+                        </a>
+                        <a href="#" className="text-neutral-400 font-light hover:text-white text-sm transition-colors duration-200">
+                            Cookie Policy
+                        </a>
+                    </div>}*/}
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer >
     )
 }

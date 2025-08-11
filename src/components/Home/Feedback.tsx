@@ -51,8 +51,8 @@ function Feedback() {
                     autoplayDirection="down"
                 />
             </div>
-            <div className="p-2 bg-dark-bg top-0 shadow-[0_-5px_20px_rgba(0,0,0,0.4)] mb-3 items-center flex justify-center z-50">
-                <h2 className="font-helvetica font-bold text-white text-4xl">Positive feedback is <span className="font-extrabold decoration-wavy underline">guaranteed</span></h2>
+            <div className="p-2 pb-4 bg-secondary top-0 shadow-[0_-10px_20px_rgba(0,0,0,0.3)] mb-3 items-center flex justify-center z-50">
+                <h2 className="font-helvetica font-bold text-light-grreen text-4xl">Positive feedback is <span className="font-extrabold decoration-wavy underline">guaranteed</span></h2>
             </div>
         </section >
     );
