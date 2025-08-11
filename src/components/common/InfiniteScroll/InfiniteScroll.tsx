@@ -1,10 +1,7 @@
 import { useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { gsap } from 'gsap';
-import { Observer } from 'gsap/Observer';
 import './InfiniteScroll.css';
-
-gsap.registerPlugin(Observer);
 
 interface InfiniteScrollItem {
   content: ReactNode;
@@ -39,6 +36,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<gsap.core.Timeline | null>(null);
 
   const getTiltTransform = (): string => {
     if (!isTilted) return 'none';
@@ -49,75 +47,74 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
-    if (items.length === 0) return;
+    if (!container || items.length === 0) return;
+
+    // Clean up previous animation
+    if (animationRef.current) {
+      animationRef.current.kill();
+    }
 
     const divItems = gsap.utils.toArray<HTMLDivElement>(container.children);
     if (!divItems.length) return;
 
     const firstItem = divItems[0];
-    const itemStyle = getComputedStyle(firstItem);
     const itemHeight = firstItem.offsetHeight;
+    const itemStyle = getComputedStyle(firstItem);
     const itemMarginTop = parseFloat(itemStyle.marginTop) || 0;
     const totalItemHeight = itemHeight + itemMarginTop;
-    const totalHeight =
-      itemHeight * items.length + itemMarginTop * (items.length - 1);
+    const totalHeight = totalItemHeight * items.length;
 
-    const wrapFn = gsap.utils.wrap(-totalHeight, totalHeight);
-
+    // Set initial positions
     divItems.forEach((child, i) => {
-      const y = i * totalItemHeight;
-      gsap.set(child, { y });
+      gsap.set(child, { y: i * totalItemHeight });
     });
 
-    // Observer removed - no more grab and pull interaction
-
-    let rafId: number;
     if (autoplay) {
-      const directionFactor = autoplayDirection === 'down' ? 1 : -1;
-      const speedPerFrame = autoplaySpeed * directionFactor;
+      // Create a single timeline animation instead of RAF loop
+      const timeline = gsap.timeline({ repeat: -1, ease: "none" });
 
-      const tick = () => {
-        divItems.forEach((child) => {
-          gsap.set(child, {
-            y: `+=${speedPerFrame}`,
+      // Calculate duration based on speed (lower speed = longer duration)
+      const duration = totalHeight / (autoplaySpeed * 60); // 60px per speed unit per second
+
+      divItems.forEach((child) => {
+        // Animate each item continuously
+        const direction = autoplayDirection === 'down' ? totalHeight : -totalHeight;
+
+        timeline.fromTo(child,
+          { y: direction * -1 },
+          {
+            y: direction,
+            duration: duration,
+            ease: "none",
             modifiers: {
-              y: gsap.utils.unitize(wrapFn),
-            },
-          });
-        });
-        rafId = requestAnimationFrame(tick);
-      };
+              y: gsap.utils.unitize(gsap.utils.wrap(-totalHeight, totalHeight))
+            }
+          }, 0
+        );
+      });
 
-      rafId = requestAnimationFrame(tick);
+      animationRef.current = timeline;
 
+      // Handle pause on hover
       if (pauseOnHover) {
-        const stopTicker = () => rafId && cancelAnimationFrame(rafId);
-        const startTicker = () => {
-          rafId = requestAnimationFrame(tick);
-        };
+        const pauseAnimation = () => timeline.pause();
+        const resumeAnimation = () => timeline.play();
 
-        container.addEventListener('mouseenter', stopTicker);
-        container.addEventListener('mouseleave', startTicker);
+        container.addEventListener('mouseenter', pauseAnimation);
+        container.addEventListener('mouseleave', resumeAnimation);
 
         return () => {
-          // observer.kill(); // No observer to kill
-          stopTicker();
-          container.removeEventListener('mouseenter', stopTicker);
-          container.removeEventListener('mouseleave', startTicker);
-        };
-      } else {
-        return () => {
-          // observer.kill(); // No observer to kill
-          rafId && cancelAnimationFrame(rafId);
+          timeline.kill();
+          container.removeEventListener('mouseenter', pauseAnimation);
+          container.removeEventListener('mouseleave', resumeAnimation);
         };
       }
+
+      return () => {
+        timeline.kill();
+      };
     }
 
-    return () => {
-      // observer.kill(); // No observer to kill
-      if (rafId) cancelAnimationFrame(rafId);
-    };
   }, [
     items,
     autoplay,
@@ -129,21 +126,34 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
     negativeMargin,
   ]);
 
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.kill();
+      }
+    };
+  }, []);
+
   return (
     <>
       <style>
         {`
           .infinite-scroll-wrapper {
             max-height: ${maxHeight};
+            overflow: hidden;
+            position: relative;
           }
   
           .infinite-scroll-container {
             width: ${width};
+            will-change: transform;
           }
   
           .infinite-scroll-item {
             height: ${itemMinHeight}px;
             margin-top: ${negativeMargin};
+            will-change: transform;
           }
         `}
       </style>

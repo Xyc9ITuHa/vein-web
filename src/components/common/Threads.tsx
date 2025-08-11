@@ -9,6 +9,7 @@ interface ThreadsProps {
     enableMouseInteraction?: boolean;
 }
 
+
 const vertexShader = `
 attribute vec2 position;
 attribute vec2 uv;
