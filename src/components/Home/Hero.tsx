@@ -18,9 +18,9 @@ function Hero() {
                             <h1 className="font-dune text-6xl lg:text-7xl xl:text-8xl text-secondary mt-2 sm:mt-3">
                                 VEIN
                             </h1>
-                            <h4 className="text-3xl font-helvetica font-light mt-1 text-secondary">
+                            <h2 className="text-3xl font-helvetica font-light mt-1 text-secondary">
                                 design
-                            </h4>
+                            </h2>
                         </ParallaxDiv>
                     </div>
                 </div>

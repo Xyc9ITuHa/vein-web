@@ -18,7 +18,7 @@ const Information = () => {
                         src={flowers}
                         alt="flowers on the floor"
                         className={`absolute -z-10 transition-all duration-1000 ease-in-out w-full h-auto lg:top-0 ${isVisible
-                            ? 'opacity-70 scale-100 blur-none'
+                            ? 'opacity-50 scale-100 blur-none'
                             : 'opacity-0 scale-75 blur-lg'
                             }`}
                     />
