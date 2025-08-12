@@ -1,11 +1,26 @@
 # robots.txt for Vein - floral design
+# https://neon-pastelito-b0cad7.netlify.app/
 
-# Allow all crawlers to access all content
+# Allow all web crawlers to access all content
 User-agent: *
 Allow: /
 
-# Optional: Specify your sitemap location
-# Sitemap: https://yourdomain.com/sitemap.xml
-
-# Optional: Crawl delay (in seconds) if needed
+# Optional: Add crawl delay if needed (uncomment if you experience server load issues)
 # Crawl-delay: 1
+
+# Block access to common development/build files (if they exist)
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /src/
+Disallow: /.env
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /yarn.lock
+
+# Allow important files
+Allow: /assets/
+Allow: /images/
+Allow: /favicon.ico
+
+# Sitemap location (update when you create a sitemap)
+# Sitemap: https://neon-pastelito-b0cad7.netlify.app/sitemap.xml
