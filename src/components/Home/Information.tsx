@@ -2,7 +2,6 @@ const photo = "/images/alona_photo.webp";
 const flowers = "/images/flowers.webp";
 import { useIntersection } from "../common/useIntersection";
 import { lazy, useRef } from "react";
-const Div3D = lazy(() => import("../common/Div3D"));
 const Card = lazy(() => import("../common/Card"));
 
 const Information = () => {
@@ -23,11 +22,9 @@ const Information = () => {
                             : 'opacity-0 scale-75 blur-lg'
                             }`}
                     />
-                    <Div3D sensitivity={20} className="cursor-default">
-                        <h1 className="font-helvetica text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-dark-bg font-black leading-none relative z-10">
-                            About<br />Alona
-                        </h1>
-                    </Div3D>
+                    <h1 className="font-helvetica text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-dark-bg font-black leading-none relative z-10">
+                        About<br />Alona
+                    </h1>
                 </div>
 
                 <Card className="flex flex-col md:flex-row z-10">

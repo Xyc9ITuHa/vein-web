@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { LogoColors } from "../icons/LogoColors.tsx";
-const Threads = lazy(() => import("../common/Threads.tsx"))
+
 const ParallaxDiv = lazy(() => import("../common/ParalaxDiv.tsx"));
 
 
@@ -9,14 +9,7 @@ function Hero() {
         <>
             <section id="hero" className="relative">
                 <div className="relative min-h-screen flex flex-col">
-                    {/* Background threads */}
-                    <div className="absolute inset-0 w-full h-full opacity-75 -z-40 top-80 ">
-                        <Threads
-                            amplitude={1}
-                            distance={0}
-                            enableMouseInteraction={true}
-                        />
-                    </div>
+
 
                     {/* Main content */}
                     <div className="flex-1 flex flex-col items-center justify-center text-center px-4 py-8 sm:px-6 lg:px-8">
