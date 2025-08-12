@@ -67,7 +67,7 @@ function MiniGallery() {
                 <h2 className="font-helvetica font-bold text-5xl my-2">
                     Look at our work <br />
                     Or better visit our{" "}
-                    <a className="font-extrabold text-dark-bg underline decoration-wavy hover:cursor-pointer">
+                    <a href="/gallery/" className="font-extrabold text-dark-bg underline decoration-wavy hover:cursor-pointer">
                         <em>Gallery</em>
                     </a>
                 </h2>
