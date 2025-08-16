@@ -1,5 +1,5 @@
 # robots.txt for Vein - floral design
-# https://neon-pastelito-b0cad7.netlify.app/
+# https://veindesign.be/
 
 # Allow all web crawlers to access all content
 User-agent: *
