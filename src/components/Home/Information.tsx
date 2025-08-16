@@ -1,5 +1,7 @@
 const photo = "/images/alona_photo.webp";
 const flowers = "/images/flowers.webp";
+const candles = "/images/logo_candles.webp";
+import ParallaxDiv from "../common/ParalaxDiv";
 import { useIntersection } from "../common/useIntersection";
 import { lazy, useRef } from "react";
 const Card = lazy(() => import("../common/Card"));
@@ -10,14 +12,20 @@ const Information = () => {
 
 
     return (
-        <section id="information" className="py-16 relative border-t-2 border-light-oak/50 bg-cream -z-20">
+        <section id="information" className="pb-16 relative border-t-2 border-light-oak/50 bg-cream -z-50">
+            <div className="top-0">
+                <ParallaxDiv speed={1.3} className="flex justify-center items-center -z-40 top-0">
+                    <img src={candles} alt="Vein logo behind candles on table decorated with flowers" className="overflow-hidden" />
+                </ParallaxDiv>
+                <div className="-z-30 bg-cream h-100 w-full "></div>
+            </div>
             <div className="container mx-auto px-4 flex flex-col lg:flex-col xl:flex-row gap-8 lg:gap-12 items-start">
                 <div className="flex-shrink-0 md:w-full lg:w-auto">
                     <img
                         ref={flowersRef}
                         src={flowers}
                         alt="flowers on the floor"
-                        className={`absolute -z-10 transition-all duration-1000 ease-in-out w-full h-auto lg:top-0 ${isVisible
+                        className={`absolute -z-10 transition-all duration-1000 ease-in-out w-full h-auto ${isVisible
                             ? 'opacity-50 scale-100 blur-none'
                             : 'opacity-0 scale-75 blur-lg'
                             }`}
