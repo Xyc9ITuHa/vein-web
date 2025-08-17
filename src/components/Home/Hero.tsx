@@ -1,4 +1,4 @@
-import { lazy, useEffect, useRef } from "react";
+import { lazy } from "react";
 import { LogoColors } from "../icons/LogoColors.tsx";
 {/*import { animate, createScope, onScroll, utils } from "animejs";
 const ring_xl = "/images/ring_xl.webp";
