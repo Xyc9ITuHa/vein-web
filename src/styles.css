@@ -8,6 +8,24 @@
     font-display: swap;
 }
 
+@layer components {
+    .animated-border {
+        @apply relative;
+        --border-width: 0%;
+        --border-left: auto;
+        --border-right: auto;
+    }
+
+    .animated-border::after {
+        @apply absolute bottom-0 bg-light-oak/50;
+        content: '';
+        height: 2px;
+        width: var(--border-width);
+        left: var(--border-left);
+        right: var(--border-right);
+
+    }
+}
 
 @theme {
     --font-dune: 'Dune Rise', 'Arial Black', 'Impact', sans-serif;
@@ -79,7 +97,5 @@
         }
     }
 
-    /* Spacing */
-    --spacing-18: 4.5rem;
-    --spacing-22: 5.5rem;
+
 }

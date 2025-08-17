@@ -1,92 +1,62 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
+import { useIntersection } from './useIntersection';
 
 interface ParallaxDivProps {
     children: React.ReactNode;
     speed?: number;
     className?: string;
-    rootMargin?: string;
 }
 
-const ParallaxDiv = ({
-    children,
-    speed = 1,
-    className = "",
-    rootMargin = "100px"
-}: ParallaxDivProps) => {
+const ParallaxDiv = ({ children, speed = 1, className = "" }: ParallaxDivProps) => {
     const elementRef = useRef<HTMLDivElement>(null);
-    const [isVisible, setIsVisible] = useState(false);
-    const rafId = useRef<number | undefined>(undefined);
+    const isVisible = useIntersection(elementRef, '100px');
 
-    // Optimized scroll handler using RAF and caching
-    const handleScroll = useCallback(() => {
-        if (!elementRef.current || !isVisible) return;
 
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * (speed - 1);
-        elementRef.current.style.transform = `translateY(${rate}px)`;
-    }, [speed, isVisible]);
-
-    // Throttled scroll handler
-    const throttledScroll = useCallback(() => {
-        if (rafId.current) return;
-
-        rafId.current = requestAnimationFrame(() => {
-            handleScroll();
-            rafId.current = undefined;
-        });
-    }, [handleScroll]);
-
-    // Intersection Observer setup
     useEffect(() => {
-        const element = elementRef.current;
-        if (!element) return;
+        const handleScroll = () => {
+            const scrolled = window.pageYOffset;
+            const element = elementRef.current;
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsVisible(entry.isIntersecting);
-            },
-            {
-                rootMargin,
-                threshold: 0
-            }
-        );
-
-        observer.observe(element);
-
-        return () => {
-            observer.disconnect();
-            if (rafId.current) {
-                cancelAnimationFrame(rafId.current);
+            if (element) {
+                const rate = scrolled * (speed - 1);
+                element.style.transform = `translateY(${rate}px)`;
             }
         };
-    }, [rootMargin]);
 
-    // Scroll listener setup - only when visible
-    useEffect(() => {
-        if (!isVisible) return;
-
-        window.addEventListener('scroll', throttledScroll, { passive: true });
-
-        // Initial transform calculation
-        throttledScroll();
-
-        return () => {
-            window.removeEventListener('scroll', throttledScroll);
-            if (rafId.current) {
-                cancelAnimationFrame(rafId.current);
+        let ticking = false;
+        const optimizedScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
-    }, [isVisible, throttledScroll]);
 
-    return (
-        <div
+        window.addEventListener('scroll', optimizedScroll, { passive: true });
+        return () => window.removeEventListener('scroll', optimizedScroll);
+    }, [speed]);
+
+    if (!isVisible) {
+        return <div
             ref={elementRef}
-            className={`relative ${className}`}
-            style={isVisible ? { willChange: 'transform' } : undefined}
-        >
+            className={`relative ${className}`}>
             {children}
-        </div>
-    );
+        </div>;
+    } else {
+        return (
+            <div
+                ref={elementRef}
+                className={`relative ${className}`}
+                style={{
+                    willChange: 'transform',
+                }}
+            >
+                {children}
+            </div>
+        );
+    }
 };
 
 export default ParallaxDiv;

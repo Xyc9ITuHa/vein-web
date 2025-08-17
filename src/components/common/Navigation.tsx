@@ -31,7 +31,7 @@ export default function Navigation() {
     return (
         <Disclosure as="nav" className="bg-light-oak/90 w-full fixed top-0 z-50 backdrop-blur-sm overflow-hidden">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="relative flex h-16 items-center justify-between">
+                <div className=" flex h-16 items-center justify-between">
                     {/* Logo and Brand */}
                     <div className="flex items-center">
                         <div className="relative flex items-center">
@@ -64,7 +64,7 @@ export default function Navigation() {
 
                     {/* Mobile menu button - Fixed positioning */}
                     <div className="sm:hidden">
-                        <DisclosureButton className="group relative inline-flex items-center justify-center p-2 text-white hover:bg-dark-bg/70 hover:text-white focus:ring-1 focus:ring-white focus:outline-none focus:ring-inset transition-colors duration-200">
+                        <DisclosureButton className="group inline-flex items-center justify-center p-2 text-white hover:bg-dark-bg/70 hover:text-white focus:ring-1 focus:ring-white focus:outline-none focus:ring-inset transition-colors duration-200">
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">Open main menu</span>
                             <Bars3Icon

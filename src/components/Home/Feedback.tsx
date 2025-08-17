@@ -41,7 +41,7 @@ function Feedback() {
     return (
 
         <section id="feedback" className="relative bottom-0 ">
-            <div style={{ height: '500px', position: 'relative' }}>
+            <div style={{ height: '500px', position: 'relative' }} className="bg-gradient-to-b from-accent to-cream">
                 <InfiniteScroll
                     items={items}
                     isTilted={true}
