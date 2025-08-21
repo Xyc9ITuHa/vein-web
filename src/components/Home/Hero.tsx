@@ -19,7 +19,7 @@ function Hero() {
 
         utils.$('#ring').forEach(($ring, key) => {
             animate($ring, {
-                rotate: key % 2 === 0 ? '1turn' : '-1turn',
+                rotate: key % 2 === 0 ? '360deg' : '-360deg',
                 loop: true,
                 ease: 'linear',
                 duration: 100000,
