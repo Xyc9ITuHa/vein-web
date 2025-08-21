@@ -4,6 +4,7 @@ import Hero from "./Hero";
 
 const Information = lazy(() => import("./Information"));
 const MiniGallery = lazy(() => import("./MiniGallery"));
+const Services = lazy(() => import("./Services/Services"));
 const Feedback = lazy(() => import("./Feedback"));
 const Contact = lazy(() => import("./Contact"));
 const Footer = lazy(() => import("../common/Footer"));
@@ -31,6 +32,10 @@ function Home() {
 
                 <Suspense fallback={<SectionLoader />}>
                     <MiniGallery />
+                </Suspense>
+
+                <Suspense fallback={<SectionLoader />}>
+                    <Services />
                 </Suspense>
 
                 <Suspense fallback={<SectionLoader />}>
