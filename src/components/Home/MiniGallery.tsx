@@ -63,12 +63,12 @@ function MiniGallery() {
 
     return (
         <>
-            <section className="py-4 px-2 bg-yellow-50/70 drop-shadow-2xl">
-                <h2 className="font-helvetica font-bold text-5xl my-2">
-                    Look at our work <br />
-                    Or better visit our{" "}
-                    <a href="/gallery/" className="font-extrabold text-dark-bg underline decoration-wavy hover:cursor-pointer hover:text-amber-900">
-                        <em>Gallery</em>
+            <section className="pb-4 pt-2 px-2 bg-yellow-50/70 drop-shadow-2xl">
+                <h2 className="font-helvetica font-medium text-xl sm:text-3xl my-2 text-left">
+                    Look at our work
+                    or better visit our<br />
+                    <a href="/gallery/" className="font-bold text-lime-900 hover:cursor-pointer hover:text-lime-800 text-center">
+                        Gallery
                     </a>
                 </h2>
                 <div className="pt-3">

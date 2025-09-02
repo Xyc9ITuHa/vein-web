@@ -2,6 +2,7 @@ import { lazy, type SVGProps } from 'react'
 import type { JSX } from 'react/jsx-runtime'
 import { Instagram, Mail, MapPin, Phone } from 'lucide-react'
 import { WhatsApp } from '../icons/WhatsApp.tsx'
+import Form from './Form.tsx';
 const Card = lazy(() => import('../common/Card.tsx'));
 
 const social = [
@@ -98,6 +99,7 @@ function Contact() {
                 </div>
 
             </Card>
+            <Form />
         </section>
     );
 }

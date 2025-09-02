@@ -1,12 +1,6 @@
 {
   "photos": [
     {
-      "src": "/images/gallery/abstract_flowers_statue_decoration_outdoors.webp",
-      "width": 2048,
-      "height": 1536,
-      "alt": "Abstract Flowers Statue Decoration Outdoors"
-    },
-    {
       "src": "/images/gallery/a_big_bouquet_in_a_basket_with_light_pink_white_and_orange_flowers.webp",
       "width": 1536,
       "height": 2048,
@@ -59,12 +53,6 @@
       "width": 960,
       "height": 1280,
       "alt": "Ceiling With Hanging Dried Plants Decoration All Over It"
-    },
-    {
-      "src": "/images/gallery/circle_made_out_of_swoven_branches.webp",
-      "width": 960,
-      "height": 1280,
-      "alt": "Circle Made Out Of Swoven Branches"
     },
     {
       "src": "/images/gallery/cutted_pieces_of_wood_hanging_abocve_tables_and_some_roots_decorations_on_wall_behind.webp",
@@ -193,7 +181,7 @@
       "alt": "White Staircase Decorated With White, Rose And Burgundy Flowers And Bouquet On A Table In Front Of It"
     }
   ],
-  "generated": "2025-08-12T13:17:19.451Z",
-  "count": 32,
+  "generated": "2025-08-21T23:28:34.091Z",
+  "count": 30,
   "note": "Generated automatically by generatePhotos.js"
 }
