@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
-function Form() {
+export default function ContactForm() {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const [formData, setFormData] = useState({
         name: '',
         contact: '',
@@ -20,38 +22,61 @@ function Form() {
         }));
     };
 
-    const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    interface FormData {
+        name: string;
+        contact: string;
+        eventDate: string;
+        serviceType: string;
+        budget: string;
+        additionalComments: string;
+        clientType: string;
+    }
+
+    interface Fields extends FormData {
+        _captcha: string;
+        _next: string;
+    }
+
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
-        // Create FormData object to send to FormSubmit.co
-        const formSubmitData = new FormData();
 
-        // Add all form fields
-        formSubmitData.append('name', formData.name);
-        formSubmitData.append('contact', formData.contact);
-        formSubmitData.append('eventDate', formData.eventDate);
-        formSubmitData.append('serviceType', formData.serviceType);
-        formSubmitData.append('budget', formData.budget);
-        formSubmitData.append('additionalComments', formData.additionalComments);
-        formSubmitData.append('clientType', formData.clientType);
+        const form: HTMLFormElement = document.createElement('form');
+        form.action = 'https://formsubmit.co/zoom.2000v@gmail.com';
+        form.method = 'POST';
+        form.style.display = 'none';
 
-        // FormSubmit.co configuration
-        formSubmitData.append('_captcha', 'false');
-        formSubmitData.append('_next', 'https://yourdomain.com/thank-you');
+        const fields: Fields = {
+            name: formData.name,
+            contact: formData.contact,
+            eventDate: formData.eventDate,
+            serviceType: formData.serviceType,
+            budget: formData.budget,
+            additionalComments: formData.additionalComments,
+            clientType: formData.clientType,
+            _captcha: 'false',
+            _next: `${window.location.origin}/thank-you.html`
+        };
 
-        try {
-            // Replace 'your@email.com' with your actual email
-            await fetch('https://formsubmit.co/rodefevu@mailgolem.com', {
-                method: 'POST',
-                body: formSubmitData
-            });
+        Object.keys(fields).forEach(key => {
+            const input: HTMLInputElement = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = fields[key as keyof Fields];
+            form.appendChild(input);
+        });
 
+        // Append form to body, submit, then remove
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+
+        // Show success message after a delay
+        setTimeout(() => {
+            setIsSubmitting(false);
             setIsSubmitted(true);
-        } catch (error) {
-            console.error('Form submission error:', error);
-            // For demo purposes, still show success message
-            setIsSubmitted(true);
-        }
+        }, 1000);
     };
 
     if (isSubmitted) {
@@ -62,7 +87,18 @@ function Form() {
                     <h3 className="text-lg font-semibold text-green-800 mb-2">Thank you!</h3>
                     <p className="text-green-700">We will contact you soon.</p>
                     <button
-                        onClick={() => setIsSubmitted(false)}
+                        onClick={() => {
+                            setIsSubmitted(false);
+                            setFormData({
+                                name: '',
+                                contact: '',
+                                eventDate: '',
+                                serviceType: '',
+                                budget: '',
+                                additionalComments: '',
+                                clientType: ''
+                            });
+                        }}
                         className="mt-4 text-blue-600 hover:text-blue-800 underline"
                     >
                         Send another message
@@ -240,22 +276,57 @@ function Form() {
                 {/* Submit Button */}
                 <button
                     onClick={handleSubmit}
-                    disabled={!formData.name || !formData.contact || !formData.serviceType || !formData.clientType}
+                    disabled={!formData.name || !formData.contact || !formData.serviceType || !formData.clientType || isSubmitting}
                     className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
-                    Send
+                    {isSubmitting ? 'Sending...' : 'Send'}
                 </button>
             </div>
 
-            {/* FormSubmit.co Instructions */}
-            <div className="mt-6 p-4 bg-gray-50 rounded-lg text-xs text-gray-600">
-                <h4 className="font-semibold mb-2">Implementation Notes:</h4>
-                <p className="mb-1">• Replace 'your@email.com' in the fetch URL with your actual email</p>
-                <p className="mb-1">• First submission will require email confirmation</p>
-                <p>• Update the '_next' parameter with your thank-you page URL</p>
+            {/* Setup Instructions */}
+            <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg text-xs text-gray-700">
+                <h4 className="font-semibold mb-2 text-red-800">🔧 FormSubmit Setup Required:</h4>
+                <div className="space-y-1">
+                    <p>1. Replace <code className="bg-red-100 px-1 rounded">your@email.com</code> with your real email</p>
+                    <p>2. Make sure your site is served over HTTPS (Netlify does this automatically)</p>
+                    <p>3. Submit the form once to receive confirmation email</p>
+                    <p>4. Click the confirmation link in the email</p>
+                    <p>5. Create a <code className="bg-red-100 px-1 rounded">thank-you.html</code> page (optional)</p>
+                </div>
             </div>
+
+            {/* Alternative HTML Form for Reference */}
+            <details className="mt-4">
+                <summary className="text-sm text-gray-600 cursor-pointer hover:text-gray-800">
+                    📋 Alternative: Pure HTML Form Code
+                </summary>
+                <div className="mt-2 p-3 bg-gray-100 rounded text-xs font-mono overflow-x-auto">
+                    <pre>{`<form action="https://formsubmit.co/your@email.com" method="POST">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="text" name="contact" placeholder="Phone/Email" required>
+  <input type="date" name="eventDate">
+  <select name="serviceType" required>
+    <option value="">Select Service</option>
+    <option value="Event">Event</option>
+    <option value="Interior">Interior</option>
+    <option value="Floristics">Floristics</option>
+    <option value="Showcase">Showcase</option>
+  </select>
+  <select name="budget">
+    <option value="">Select Budget</option>
+    <option value="Under $1,000">Under $1,000</option>
+    <!-- ... more options ... -->
+  </select>
+  <textarea name="additionalComments" placeholder="Comments"></textarea>
+  <input type="radio" name="clientType" value="Private Client" required>Private Client
+  <input type="radio" name="clientType" value="Interior Designer">Interior Designer
+  <input type="radio" name="clientType" value="Hotel/Restaurant">Hotel/Restaurant
+  <input type="radio" name="clientType" value="Other">Other
+  <input type="hidden" name="_captcha" value="false">
+  <button type="submit">Send</button>
+</form>`}</pre>
+                </div>
+            </details>
         </div>
     );
 }
-
-export default Form;
